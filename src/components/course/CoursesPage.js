@@ -12,12 +12,11 @@ class CoursesPage extends React.Component {
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
-    this.courseRow = this.courseRow.bind(this);
   }
 
   onTitleChange(event){
     const course = this.state.course;
-    course.tile = event.target.value;
+    course.title = event.target.value;
     this.setState({
       course: course
     });
