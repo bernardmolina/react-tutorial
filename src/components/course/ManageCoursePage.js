@@ -54,7 +54,19 @@ ManageCoursePage.contextTypes = {
   router: PropTypes.object
 };
 
+function getCourseById(courses, id){
+  const course = courses.filter(course => course.id == id);
+  if(course.length) return course[0];
+  return null;
+}
+
 function mapStateToProps(state, ownProps){
+  const courseId = ownProps.params.id;
+
+  if(courseId){
+    course = getCourseById(state.courses, courseId);
+  }
+
   let course =  {
     id: '',
     whatHref: '',
