@@ -63,10 +63,6 @@ function getCourseById(courses, id){
 function mapStateToProps(state, ownProps){
   const courseId = ownProps.params.id;
 
-  if(courseId){
-    course = getCourseById(state.courses, courseId);
-  }
-
   let course =  {
     id: '',
     whatHref: '',
@@ -75,6 +71,11 @@ function mapStateToProps(state, ownProps){
     length: '',
     category: ''
   };
+
+  if(courseId){
+    course = getCourseById(state.courses, courseId);
+  }
+
   const authorsFormattedForDropdown = state.authors.map(author => {
     return {
       value: author.id,

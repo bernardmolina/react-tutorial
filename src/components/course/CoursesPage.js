@@ -21,7 +21,7 @@ class CoursesPage extends React.Component {
   }
 
   render(){
-    const {courses} = this.props;
+    const {course} = this.props;
 
     return (
       <div>
@@ -31,7 +31,7 @@ class CoursesPage extends React.Component {
           value="Add Course"
           className="btn btn-primary"
           onClick={this.redirectToAddCoursePage} />
-        <CourseList courses={courses} />
+        <CourseList courses={course} />
       </div>
     );
   }
@@ -39,7 +39,7 @@ class CoursesPage extends React.Component {
 
 function mapStateToProps(state, ownProps){
   return {
-    courses: state.courses
+    course: state.courses
   };
 }
 
@@ -51,7 +51,7 @@ function mapDispatchToProps(dispatch){
 
 CoursesPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  courses: PropTypes.array.isRequired
+  course: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
