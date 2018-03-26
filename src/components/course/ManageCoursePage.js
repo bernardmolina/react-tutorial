@@ -78,7 +78,7 @@ function mapStateToProps(state, ownProps){
     category: ''
   };
 
-  if(courseId && state.course.id > 0){
+  if(courseId && state.courses.length > 0){
     course = getCourseById(state.courses, courseId);
   }
 
