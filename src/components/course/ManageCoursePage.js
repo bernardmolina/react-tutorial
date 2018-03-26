@@ -17,6 +17,12 @@ class ManageCoursePage extends React.Component {
     this.saveCourse = this.saveCourse.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(this.props.course.id != nextProps.course.id){
+      this.setState({ course: Object.assign({}, nextProps.course)});
+    }
+  }
+
   updateCourseState(event){
     const field = event.target.name;
     let course = Object.assign({}, this.state.course);
@@ -26,7 +32,7 @@ class ManageCoursePage extends React.Component {
 
   saveCourse(event){
     event.preventDefault();
-    this.props.actions.saveCourse(this.state.course);
+    this.props.action.saveCourse(this.state.course);
     this.context.router.push('/courses');
   }
 
@@ -47,7 +53,7 @@ class ManageCoursePage extends React.Component {
 ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired,
   authors: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  action: PropTypes.object.isRequired
 };
 
 ManageCoursePage.contextTypes = {
@@ -72,7 +78,7 @@ function mapStateToProps(state, ownProps){
     category: ''
   };
 
-  if(courseId){
+  if(courseId && state.course.id > 0){
     course = getCourseById(state.courses, courseId);
   }
 
